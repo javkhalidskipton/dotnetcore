@@ -20,3 +20,10 @@ steps:
     testResultsFiles: '**/*.trx'
 
 - task: PublishBuildArtifacts@1
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)' 
+    includeRootFolder: true
+    archiveType: 'zip' # Options: zip, 7z, tar, wim
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
+    replaceExistingArchive: true 
